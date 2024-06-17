@@ -4,11 +4,11 @@ I included some my machine learning projects here. Each folder has a `.ipynb` fi
 ## Overview:
 Here are the links to some famous machine learning tasks. 
 
-### [CIFAR-10 Classification](/CIFAR-10%20Classification%20with%20CNN/)
-<img src="./images/CIFAR10.png" width=150>
-
 ### [Movie Recommender System & Geo-location](/Movie%20Recommender%20&%20Geo-location%20with%20k-NN/)
 <img src="./images/geo.jpg" width=200>
+
+### [CIFAR-10 Classification](/CIFAR-10%20Classification%20with%20CNN/)
+<img src="./images/CIFAR10.png" width=150>
 
 ### [Titanic Survival Prediction](/Titanic%20survival%20Prediction%20with%20Random%20Forests/)
 
