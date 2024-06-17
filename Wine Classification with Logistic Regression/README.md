@@ -7,7 +7,7 @@ The wine dataset data.mat consists of 6,000 sample points, each having 12 featur
 
 We begin by normalizing the data with each feature’s mean and standard deviation. We use training data statistics to normalize both training and validation/test data. Then add a fictitious dimension. Whenever required, we should tune hyperparameter values with cross-validation.
 
-Look at [`Wine Classification with Logistic Regression.ipynb`]() for my implementation.
+Look at [`Wine Classification with Logistic Regression.ipynb`](https://github.com/JC01111/Machine-Learning-Projects/blob/main/Wine%20Classification%20with%20Logistic%20Regression/Wine%20Classification%20with%20Logistic%20Regression.ipynb) for my implementation.
 
 ### Contents
 1. Batch Gradient Descent (BGD) 
