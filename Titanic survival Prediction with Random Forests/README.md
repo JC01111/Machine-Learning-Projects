@@ -7,9 +7,13 @@ In this project, I implemented decision trees and random forests for classificat
 1. the spam dataset. 
 2. Titanic dataset to predict survivors of the infamous disaster.
 
-Look at [`Titanic survival Prediction with Random Forests.ipynb`]() for my implementation. I first implemented _Decision Trees_, then I implemented a _Random Forest_ based on the decision trees I have. 
+Look at [Titanic survival Prediction with Random Forests.ipynb](https://github.com/JC01111/Machine-Learning-Projects/blob/main/Titanic%20survival%20Prediction%20with%20Random%20Forests/Titanic%20survival%20Prediction%20with%20Random%20Forests.ipynb) for my implementation. I first implemented _Decision Trees_, then I implemented a _Random Forest_ based on the decision trees I have.
 
-These are the accuracy based on my implementation for `Spam` and `titanic` datasets:
+Look at [Titanic survival Prediction with Random Forests_Sklearn.ipynb](https://github.com/JC01111/Machine-Learning-Projects/blob/main/Titanic%20survival%20Prediction%20with%20Random%20Forests/Titanic%20survival%20Prediction%20with%20Random%20Forests_Sklearn.ipynb) for the Scikit-learn version of decision trees and random forests methods for spam classification and Titanic prediction. 
+
+___
+
+These are the accuracies based on my implementation for `Spam` and `titanic` datasets:
 ```
 Spam training accuracy for decisionTree: 0.8071111111111111,
 Spam validation accuracy for decisionTree: 0.7708703374777975
