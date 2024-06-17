@@ -11,6 +11,7 @@ Here are the links to some famous machine learning tasks.
 <img src="./images/CIFAR10.png" width=150>
 
 ### [Titanic Survival Prediction](/Titanic%20survival%20Prediction%20with%20Random%20Forests/)
+<img src="./images/titanic.jpeg" width=300>
 
 ### [Wine Classification](/Wine%20Classification%20with%20Logistic%20Regression/)
 
