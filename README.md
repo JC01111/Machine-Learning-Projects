@@ -1,5 +1,5 @@
 # Machine Learning Projects
-I included some my machine learning projects here. Each folder has a `.ipynb` file of my work and a `.pdf` version of the jupyternotebook for reading. Notice that some projects do not include datasets, for some datasets you can download from the link in my work.
+Here are some of my machine learning projects. Each folder has a `.ipynb` file of my work and a `README.md` file to introduce the structure and the goal of the proejct. Notice that some projects do not include datasets, for some datasets you can download from the link in my work.
 
 ## Overview:
 Here are the links to some famous machine learning tasks. 
