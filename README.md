@@ -13,6 +13,11 @@ Here are the links to some famous machine learning tasks.
 ### [Titanic Survival Prediction](/Titanic%20survival%20Prediction%20with%20Random%20Forests/)
 <img src="./images/titanic.jpeg" width=300>
 
-### [Wine Classification](/Wine%20Classification%20with%20Logistic%20Regression/)
+### [MNIST & Spam Classification](/MNIST%20&%20Spam%20Classification/)
+<img src="./images/MNIST.jpeg" width=250>
 
-### [MNIST and Spam Classification]()
+### [Wine Classification](/Wine%20Classification%20with%20Logistic%20Regression/)
+<img src="./images/wine.jpeg" width=200>
+
+### [Housing Prices Prediction](/Housing%20Prices%20Prediction/)
+<img src="./images/housing.jpg" width=250>
