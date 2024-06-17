@@ -8,12 +8,18 @@ This project has two parts:
 1. I built a personalized movie recommender system by using SVD to perform Latent Semantic Analysis, and use it to construct a Latent Factor Model (LFM) for personalized recommendation. 
 2. I used k-nearest neighbors to predict latitude and longitude coordinates of images from their CLIP embeddings. 
 
-For exact implementation, look at the [Movie Recommender System & Geo-location with k-NN.ipyb]()
+For exact implementation, look at the [Movie Recommender System & Geo-location with k-NN.ipynb](https://github.com/JC01111/Machine-Learning-Projects/blob/main/Movie%20Recommender%20%26%20Geo-location%20with%20k-NN/Movie%20Recommender%20%26%20Geo-location%20with%20k-NN.ipynb)
 
 ### Contents
-- [Movie Recommender System]()
-    - [1. ]()
-- [Geo-location with k-NN]()
+- [Movie Recommender System](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#movie-recommender-system)
+    1. [SVD to learn low-dimensional vector representations](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#1-svd-to-learn-low-dimensional-vector-representations)
+    2. [Mean Squared Error (MSE) Loss](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#2-mean-squared-error-mse-loss)
+    3. [Compute Training MSE and Validation Accuracy of SVD LFM for various d](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#3-compute-training-mse-and-validation-accuracy-of-svd-lfm-for-various-d)
+    4. [Learn better user/movie vector representations by minimizing loss](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#4-learn-better-usermovie-vector-representations-by-minimizing-loss)
+- [Geo-location with k-NN](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#geo-location-with-k-nn)
+  1. [Data Visualization](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#1-data-visualization)
+  2. [Find 3 nearest neighbors](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#2-find-3-nearest-neighbors)
+  3. [Mean Displacement Error](https://github.com/JC01111/Machine-Learning-Projects/tree/main/Movie%20Recommender%20&%20Geo-location%20with%20k-NN#3-mean-displacement-error)
 
 ## Movie Recommender System
 Suppose that there are $m = 100$ movies and $n = 24,983$ users in total, and each user has watched and rated a subset of the $m$ movies. Our goal is to recommend more movies for each user given their preferences.
@@ -39,8 +45,7 @@ $y_j$ isthe $j\text{th}$ row of $V$ ($j\text{th}$ col of $V^T$), as a row vector
 
 ### 2. Mean Squared Error (MSE) Loss
 To measure the training performance of the model, I used the mean squared error (MSE) loss as the following expression.
-$$
-\text{MSE} = \sum_{(i, j) \in S} (x_i \cdot y_j - R_{ij})^2 \quad \text{where } S := \{(i, j) : R_{ij} \neq \text{NaN}\}.$$
+$$\text{MSE} = \sum_{(i, j) \in S} (x_i \cdot y_j - R_{ij})^2 \quad \text{where } S := \{(i, j) : R_{ij} \neq \text{NaN}\}.$$
 
 ### 3. Compute Training MSE and Validation Accuracy of SVD LFM for various d
 Our model as constructed may achieve 100% training accuracy, but it is prone to overfitting. Instead,
@@ -54,17 +59,17 @@ In my code, I computed pruned user/movie vector representations with $d = 2, 5, 
 <p align="center">
 <img src="../images/proj4_1.png" width=800>
 
-From the plots, $d = 10$ is optimal since it produces the highest validation accuracy of $71.65\%$.
+From the plots, $d = 10$ is optimal since it produces the highest validation accuracy of $71.65$%.
 
 ### 4. Learn better user/movie vector representations by minimizing loss
 For sparse data, replacing all missing values with zero, as we did in part (c), is not a very satisfying solution. A missing value in the training matrix $R$ means that the user has not watched the movie; this does not imply that the rating should be zero. Instead, we can learn our user/movie vector representations by minimizing the MSE loss, which only incorporates the loss on rated movies $R_{ij} \neq \text{NaN}$.
 
 Let's define a loss function
-$$L(\{x_i\}, \{y_j\}) = \sum_{(i,j) \in S} (x_i \cdot y_j - R_{ij})^2 + \sum_{i=1}^{n} \|x_i\|_2^2 + \sum_{j=1}^{m} \|y_j\|_2^2$$
+$$L(\\{x_i\\}, \\{y_j\\}) = \sum_{(i,j) \in S} (x_i \cdot y_j - R_{ij})^2 + \sum_{i=1}^{n} \||x_i\||_2^2 + \sum _{j=1}^m \||y_j\||^2_2$$
 
 where $S$ has the same definition as in the MSE. This is similar to the original MSE loss, except with two additional regularization terms to prevent the norms of the user/movie vectors from getting too large.
 
-Implement an algorithm to learn vector representations of dimension $d$, the optimal value you found in part (e), for users and movies by minimizing $L(\{x_i\}, \{y_j\})$.
+Implement an algorithm to learn vector representations of dimension $d$, the optimal value you found in part (e), for users and movies by minimizing $L(\\{x_i\\}, \\{y_j\\})$.
 
 Here is an alternating minimization scheme. First, randomly initialize $x_i$ and $y_j$ for all $i, j$. Then, minimize the above loss function with respect to the $x_i$ by treating the $y_j$ as constant vectors, and subsequently minimize the loss with respect to the $y_j$ by treating the $x_i$ as constant vectors. Repeat these two steps for a number of iterations. Note that when one of the $x_i$ or $y_j$ are constant, minimizing the loss function with respect to the other component has a closed-form solution. **Here is the derivation of the solution.**
 
@@ -135,7 +140,7 @@ Visualize the data by using matplotlib and scikit-learn, plot the image location
 </p>
 
 ### 2. Find 3 nearest neighbors
-Find the three nearest neighbors in the training set of the test image file $53633239060$.jpg. And look at their coordinates. How many of the 3 nearest neighbors are “correct”?
+Find the three nearest neighbors in the training set of the test image file 53633239060.jpg. And look at their coordinates. How many of the 3 nearest neighbors are “correct”?
 <p align="center">
 <img src="../images/geo.jpg" width=250>
 <img src="../images/proj4_4.png" width=600>
